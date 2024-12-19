@@ -4,7 +4,6 @@ var ejs = require('ejs')
 var bodyParser = require('body-parser')
 var mysql = require('mysql');
 var session = require('express-session')
-var paypal = require('paypal-rest-sdk')
 
 var app = express();
 
@@ -292,11 +291,6 @@ app.get('/single_product',function(req,res){
 
 
 
- paypal.configure({
-    'mode': 'sandbox', //sandbox or live
-    'client_id': 'Aagvk1DX69roeppiwr3GC1LijMmV6u8QHef-OMdf-SP5rDXiHkJgQgtkZ35K9YkJLfLfKa663J2y1B4S',
-    'client_secret': 'EC4Yfoz3u2PAI7VzFoa3zD_WVx9uNIKy5yH7vBckgAfRSZjBnWfM1AagnNzUUjtx9h6rkocesaDDKE_e'
-  });
 
 
 
