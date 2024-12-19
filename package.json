@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "i": "^0.3.7",
+    "mysql": "^2.18.1",
+    "paypal-rest-sdk": "^1.8.1",
+    "request": "^2.88.2"
+  },
+  "name": "solar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "testing"
+  },
+  "author": "ashija",
+  "license": "ISC",
+  "description": ""
+}
