@@ -10,7 +10,7 @@ var app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-app.listen(26)
+app.listen(2020)
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(session({secret:"secret",
     resave: false,
@@ -45,17 +45,28 @@ function calculateTotal(cart, req){
 }
 
 //localhost:
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
     var connection = mysql.createConnection({
-        host:"localhost",
-        user:"root",
+        host: "localhost",
+        user: "root",
         password: "",
-        database:"project"
-    })
+        database: "project"
+    });
 
-    connection.query("SELECT * FROM products", (err,result) => {
-        res.render("pages/index", {result:result})
-        })
+    var category = req.query.category || '*';  // Default to '*' if no category is specified
+    var query = 'SELECT * FROM products';  // Default query to select all products
+
+    if (category !== '*' && category) {
+        query += ' WHERE category = ?';  // Add condition if category is not '*'
+    }
+
+    connection.query(query, [category !== '*' ? category : undefined], (err, results) => {
+
+        res.render('pages/index', {
+            result: results,
+            category: category // Pass the selected category to EJS for active filter
+        });
+    });
 });
 
 // all about cart
@@ -288,6 +299,9 @@ app.get('/single_product',function(req,res){
     
     res.redirect('pages/index');
  });
+
+ 
+// Route to render the filtered menu items
 
 
 

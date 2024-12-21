@@ -379,12 +379,12 @@
       </div>
 
       <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter="burger">Burger</li>
-        <li data-filter="pizza">Pizza</li>
-        <li data-filter="pasta">Pasta</li>
-        <li data-filter="fries">Fries</li>
-      </ul>
+        <li class="<%= category === '*' ? 'active' : '' %>" data-filter="*">All</li>
+        <li class="<%= category === 'burger' ? 'active' : '' %>" data-filter="burger">Burger</li>
+        <li class="<%= category === 'pizza' ? 'active' : '' %>" data-filter="pizza">Pizza</li>
+        <li class="<%= category === 'pasta' ? 'active' : '' %>" data-filter="pasta">Pasta</li>
+        <li class="<%= category === 'fries' ? 'active' : '' %>" data-filter="fries">Fries</li>
+    </ul>
 
       <div class="filters-content">
         <div class="row grid">
@@ -647,8 +647,8 @@
         </div>
       </div>
     </div>
-  </section>
- -->
+  </section> -->
+ 
   <!-- end client section -->
 
   <!-- footer section -->
@@ -751,7 +751,15 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
-  
+  <script>
+    // Event listener for filtering items
+    document.querySelectorAll('.filters_menu li').forEach(item => {
+        item.addEventListener('click', function () {
+            const category = this.getAttribute('data-filter');
+            window.location.href = `/?category=${category}`;  // Redirect to the same page with the selected filter
+        });
+    });
+  </script>
 
 </body>
 
